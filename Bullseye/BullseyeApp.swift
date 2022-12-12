@@ -3,7 +3,7 @@
 //  Bullseye
 //
 //  Created by Andres Haro on 12/12/22.
-//  Kodeco App
+//  Kodeco App - First App
 
 import SwiftUI
 
