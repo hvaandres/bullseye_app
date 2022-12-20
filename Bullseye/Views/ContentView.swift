@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var alertIsVisible: Bool = false
-    @State private var whoIsThereIsVisible: Bool = false
-    
+    @State private var sliderValue: Double = 50.0
+    @State private var game: Game = Game()
     var body: some View {
         
         // The SwiftView will be wraped into a VSTACK
@@ -23,7 +23,7 @@ struct ContentView: View {
                 .font(.footnote)
                 .multilineTextAlignment(.center)
                 .padding()
-            Text("89")
+            Text(String(game.target))
                 .bold()
                 .kerning(-1.0)
                 .font(.largeTitle)
@@ -34,8 +34,7 @@ struct ContentView: View {
                 
                 Text("1")
                     .bold()
-                Slider(value:
-                        .constant(70), in: 1.0...100.0)
+                Slider(value: self.$sliderValue, in: 1.0...100.0)
                 Text("100")
                     .bold()
                     .border(Color.red, width: 2)
@@ -55,22 +54,12 @@ struct ContentView: View {
             }
             .alert(isPresented: $alertIsVisible,
                    content: {
-                return Alert(title: Text("Hello There!"), message: Text("This is there"), dismissButton: .default(Text("Awesome!")))
-            })
-            
-            Button(action: {
-                print("Who, is there!")
-                self.whoIsThereIsVisible = true
-            }){
-                Text("Who is There!")
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color(red: 0, green: 0, blue: 0.5))
-                    .clipShape(Capsule())
-            }
-            .alert(isPresented: $whoIsThereIsVisible,
-                   content: {
-                return Alert(title: Text("Who is there!"), message: Text("Little Old One"), dismissButton: .default(Text("Little Old One Who?")))
+                    var roundedValue: Int =
+                Int(self.sliderValue
+                    .rounded())
+                return Alert(title: Text("Hello There!"), message: Text("The sider value is \(roundedValue).\n" + "You scored \(self.game.points(sliderValue: roundedValue)) points this round"),
+                        dismissButton:
+                            .default(Text("Awesome!")))
             })
             
         }
