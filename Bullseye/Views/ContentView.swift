@@ -26,42 +26,12 @@ struct ContentView: View {
                 InstructionsView(game: $game)
                 
                 // Create an HSTACK
-                HStack{
-                    
-                    Text("1")
-                        .bold()
-                    Slider(value: self.$sliderValue, in: 1.0...100.0)
-                        .foregroundColor(Color("TextColor"))
-                    Text("100")
-                        .bold()
-                        .border(Color.red, width: 2)
-                        .foregroundColor(Color("TextColor"))
-                }
-                
+              
+                SliderView(sliderView: $sliderValue)
                 // Inside of the VSTACK, Create a Button
                 
-                Button(action: {
-                    print("Hello, SwiftUI!")
-                    self.alertIsVisible = true
-                }){
-                    Text("Hit Me")
-                        .bold()
-                        .font(.title3)
-                }
-                .foregroundColor(.white)
-                .padding()
-                .background(
-                    ZStack {
-                        Color("ButtonColor")
-                        LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
-                    }
-                )
+                HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
                 
-                .clipShape(Capsule())
-                .alert(isPresented: $alertIsVisible, content: {
-                    let roundedValue = Int(sliderValue.rounded())
-                    return Alert(title: Text("Hello there!"), message: Text("The slider's value is \(roundedValue).\n" + "You scored \(game.points(sliderValue: roundedValue)) points this round."), dismissButton: .default(Text("Awesome!")))
-                })
                 
             }
         }
@@ -80,6 +50,55 @@ struct InstructionsView: View {
         }
     }
 }
+
+struct SliderView: View {
+    @Binding var sliderView: Double
+    var body: some View{
+        HStack{
+            SliderLabelText(text: "1")
+            
+            Slider(value: $sliderView, in: 1.0...100.0)
+                .foregroundColor(Color("TextColor"))
+            SliderLabelText(text: "100")
+        }
+        .padding()
+    }
+}
+
+struct HitMeButton: View {
+    @Binding var alertIsVisible: Bool
+    @Binding var sliderValue: Double
+    @Binding var game: Game
+    var body: some View{
+        Button(action: {
+            print("Hello, SwiftUI!")
+            self.alertIsVisible = true
+        }){
+            Text("Hit Me")
+                .bold()
+                .font(.title3)
+        }
+        .foregroundColor(.white)
+        .padding()
+        .background(
+            ZStack {
+                Color("ButtonColor")
+                LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
+            }
+        )
+        .foregroundColor(Color.white)
+        .cornerRadius(21.0)
+        .font(.title3)
+        
+        .clipShape(Capsule())
+        .alert(isPresented: $alertIsVisible, content: {
+            let roundedValue = Int(sliderValue.rounded())
+            return Alert(title: Text("Hello there!"), message: Text("The slider's value is \(roundedValue).\n" + "You scored \(game.points(sliderValue: roundedValue)) points this round."), dismissButton: .default(Text("Awesome!")))
+        })
+        
+    }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
