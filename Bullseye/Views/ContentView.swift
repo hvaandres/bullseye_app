@@ -15,54 +15,68 @@ struct ContentView: View {
     var body: some View {
         
         // The SwiftView will be wraped into a VSTACK
-        VStack {
-            
-            Text("🎯\n PUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
-                .bold()
-                .kerning(2.0)
-                .font(.footnote)
-                .multilineTextAlignment(.center)
-                .padding()
-            Text(String(game.target))
-                .bold()
-                .kerning(-1.0)
-                .font(.largeTitle)
-                .fontWeight(.black)
-            
-            // Create an HSTACK
-            HStack{
+        
+        ZStack {
+            Color("BackgroundColor")
+                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            VStack {
                 
-                Text("1")
+                Text("🎯\n PUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
                     .bold()
-                Slider(value: self.$sliderValue, in: 1.0...100.0)
-                Text("100")
-                    .bold()
-                    .border(Color.red, width: 2)
-            }
-            
-            // Inside of the VSTACK, Create a Button
-            
-            Button(action: {
-                print("Hello, SwiftUI!")
-                self.alertIsVisible = true
-            }){
-                Text("Hit Me")
-                    .foregroundColor(.white)
+                    .kerning(2.0)
+                    .font(.footnote)
+                    .multilineTextAlignment(.center)
                     .padding()
-                    .background(Color(red: 0, green: 0, blue: 0.5))
-                    .clipShape(Capsule())
+                Text(String(game.target))
+                    .bold()
+                    .kerning(-1.0)
+                    .font(.largeTitle)
+                    .fontWeight(.black)
+                
+                // Create an HSTACK
+                HStack{
+                    
+                    Text("1")
+                        .bold()
+                    Slider(value: self.$sliderValue, in: 1.0...100.0)
+                    Text("100")
+                        .bold()
+                        .border(Color.red, width: 2)
+                }
+                
+                // Inside of the VSTACK, Create a Button
+                
+                Button(action: {
+                    print("Hello, SwiftUI!")
+                    self.alertIsVisible = true
+                }){
+                    Text("Hit Me")
+                        .bold()
+                        .font(.title3)
+                }
+                .foregroundColor(.white)
+                .padding()
+                .background(
+                    ZStack {
+                        Color("ButtonColor")
+                        LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
+                    }
+                )
+                    
+                .clipShape(Capsule())
+                .alert(isPresented: $alertIsVisible,
+                       content: {
+                        var roundedValue: Int =
+                    Int(self.sliderValue
+                        .rounded())
+                    return Alert(title: Text("Hello There!"), message: Text("The sider value is \(roundedValue).\n" + "You scored \(self.game.points(sliderValue: roundedValue)) points this round"),
+                            dismissButton:
+                                .default(Text("Awesome!")))
+                })
+                
             }
-            .alert(isPresented: $alertIsVisible,
-                   content: {
-                    var roundedValue: Int =
-                Int(self.sliderValue
-                    .rounded())
-                return Alert(title: Text("Hello There!"), message: Text("The sider value is \(roundedValue).\n" + "You scored \(self.game.points(sliderValue: roundedValue)) points this round"),
-                        dismissButton:
-                            .default(Text("Awesome!")))
-            })
-            
         }
+        
     }
 }
 
