@@ -11,6 +11,7 @@
 		0511310429479E7900908C89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0511310329479E7900908C89 /* ContentView.swift */; };
 		0511310629479E7900908C89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0511310529479E7900908C89 /* Assets.xcassets */; };
 		0511310929479E7900908C89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0511310829479E7900908C89 /* Preview Assets.xcassets */; };
+		05497EF429734486001767B3 /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05497EF329734486001767B3 /* TextViews.swift */; };
 		05EBB6DC29490E0100B4130C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EBB6DB29490E0100B4130C /* Game.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,6 +21,7 @@
 		0511310329479E7900908C89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0511310529479E7900908C89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0511310829479E7900908C89 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		05497EF329734486001767B3 /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 		05EBB6DB29490E0100B4130C /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				0511310329479E7900908C89 /* ContentView.swift */,
+				05497EF329734486001767B3 /* TextViews.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0511310429479E7900908C89 /* ContentView.swift in Sources */,
+				05497EF429734486001767B3 /* TextViews.swift in Sources */,
 				05EBB6DC29490E0100B4130C /* Game.swift in Sources */,
 				0511310229479E7900908C89 /* BullseyeApp.swift in Sources */,
 			);

@@ -21,17 +21,9 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack {
                 
-                Text("🎯\n PUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
-                    .bold()
-                    .kerning(2.0)
-                    .font(.footnote)
-                    .multilineTextAlignment(.center)
-                    .padding()
-                Text(String(game.target))
-                    .bold()
-                    .kerning(-1.0)
-                    .font(.largeTitle)
-                    .fontWeight(.black)
+                // Struct was created at the bottom of this file
+                // We bind this options to have more clean code
+                InstructionsView(game: $game)
                 
                 // Create an HSTACK
                 HStack{
@@ -39,9 +31,11 @@ struct ContentView: View {
                     Text("1")
                         .bold()
                     Slider(value: self.$sliderValue, in: 1.0...100.0)
+                        .foregroundColor(Color("TextColor"))
                     Text("100")
                         .bold()
                         .border(Color.red, width: 2)
+                        .foregroundColor(Color("TextColor"))
                 }
                 
                 // Inside of the VSTACK, Create a Button
@@ -62,16 +56,11 @@ struct ContentView: View {
                         LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
                     }
                 )
-                    
+                
                 .clipShape(Capsule())
-                .alert(isPresented: $alertIsVisible,
-                       content: {
-                        var roundedValue: Int =
-                    Int(self.sliderValue
-                        .rounded())
-                    return Alert(title: Text("Hello There!"), message: Text("The sider value is \(roundedValue).\n" + "You scored \(self.game.points(sliderValue: roundedValue)) points this round"),
-                            dismissButton:
-                                .default(Text("Awesome!")))
+                .alert(isPresented: $alertIsVisible, content: {
+                    let roundedValue = Int(sliderValue.rounded())
+                    return Alert(title: Text("Hello there!"), message: Text("The slider's value is \(roundedValue).\n" + "You scored \(game.points(sliderValue: roundedValue)) points this round."), dismissButton: .default(Text("Awesome!")))
                 })
                 
             }
@@ -80,10 +69,25 @@ struct ContentView: View {
     }
 }
 
+struct InstructionsView: View {
+    @Binding var game: Game
+    var body: some View{
+        VStack{
+            InstructionText(text: "🎯\n PUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
+                .padding(.leading, 30.0)
+                .padding(.trailing, 30.0)
+            BigNumberText(text: String(game.target))
+        }
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewLayout(.fixed(width: 568, height: 320))
+        
         ContentView()
+            .preferredColorScheme(.dark)
             .previewLayout(.fixed(width: 568, height: 320))
     }
 }
