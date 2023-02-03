@@ -11,7 +11,11 @@ struct Shapes: View {
     var body: some View {
         VStack {
             Circle()
-                .frame(width: 100.0, height: 100.0)
+                //.fill(Color.blue)
+                
+                .strokeBorder(Color.blue, lineWidth: 20.0)
+                .frame(width: 200, height: 100.0)
+                
         }
         .background(Color.green)
     }

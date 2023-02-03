@@ -17,8 +17,7 @@ struct ContentView: View {
         // The SwiftView will be wraped into a VSTACK
         
         ZStack {
-            Color("BackgroundColor")
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            BackgroundView(game: $game)
             VStack {
                 
                 // Struct was created at the bottom of this file
@@ -26,7 +25,7 @@ struct ContentView: View {
                 InstructionsView(game: $game)
                 
                 // Create an HSTACK
-              
+                
                 SliderView(sliderView: $sliderValue)
                 // Inside of the VSTACK, Create a Button
                 
@@ -88,6 +87,11 @@ struct HitMeButton: View {
         )
         .foregroundColor(Color.white)
         .cornerRadius(21.0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 55.0)
+                .strokeBorder(Color.white, lineWidth: 2.0)
+            
+        )
         .font(.title3)
         
         .clipShape(Capsule())
