@@ -23,16 +23,17 @@ struct ContentView: View {
                 // Struct was created at the bottom of this file
                 // We bind this options to have more clean code
                 InstructionsView(game: $game)
+                    .padding(.bottom, 100)
                 
                 // Create an HSTACK
                 
-                SliderView(sliderView: $sliderValue)
+               
                 // Inside of the VSTACK, Create a Button
                 
                 HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
                 
-                
             }
+            SliderView(sliderView: $sliderValue)
         }
         
     }
@@ -70,8 +71,8 @@ struct HitMeButton: View {
     @Binding var game: Game
     var body: some View{
         Button(action: {
-            print("Hello, SwiftUI!")
             self.alertIsVisible = true
+            
         }){
             Text("Hit Me")
                 .bold()
@@ -97,7 +98,10 @@ struct HitMeButton: View {
         .clipShape(Capsule())
         .alert(isPresented: $alertIsVisible, content: {
             let roundedValue = Int(sliderValue.rounded())
-            return Alert(title: Text("Hello there!"), message: Text("The slider's value is \(roundedValue).\n" + "You scored \(game.points(sliderValue: roundedValue)) points this round."), dismissButton: .default(Text("Awesome!")))
+            let points = game.points(sliderValue: roundedValue)
+            return Alert(title: Text("Hello there!"), message: Text("The slider's value is \(roundedValue).\n" + "You scored \(points) points this round."), dismissButton: .default(Text("Awesome!")) {
+                game.startNewRound(points: points)
+            })
         })
         
     }
