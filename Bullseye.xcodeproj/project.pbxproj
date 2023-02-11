@@ -17,6 +17,7 @@
 		05F77B2D298CC65E00C6CC92 /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F77B2C298CC65E00C6CC92 /* RoundedViews.swift */; };
 		05F77B2F298CCE1E00C6CC92 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F77B2E298CCE1E00C6CC92 /* BackgroundView.swift */; };
 		05F77B3A298CD80A00C6CC92 /* BullseyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F77B39298CD80A00C6CC92 /* BullseyeTests.swift */; };
+		BC5F35A12998241200E1FE81 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5F35A02998241200E1FE81 /* PointsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		05F77B2E298CCE1E00C6CC92 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		05F77B37298CD80A00C6CC92 /* BullseyeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BullseyeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F77B39298CD80A00C6CC92 /* BullseyeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullseyeTests.swift; sourceTree = "<group>"; };
+		BC5F35A02998241200E1FE81 /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				05015901298A31FF00392A60 /* Shapes.swift */,
 				05F77B2C298CC65E00C6CC92 /* RoundedViews.swift */,
 				05F77B2E298CCE1E00C6CC92 /* BackgroundView.swift */,
+				BC5F35A02998241200E1FE81 /* PointsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			files = (
 				05F77B2D298CC65E00C6CC92 /* RoundedViews.swift in Sources */,
 				0511310429479E7900908C89 /* ContentView.swift in Sources */,
+				BC5F35A12998241200E1FE81 /* PointsView.swift in Sources */,
 				05497EF429734486001767B3 /* TextViews.swift in Sources */,
 				05F77B2F298CCE1E00C6CC92 /* BackgroundView.swift in Sources */,
 				05015902298A31FF00392A60 /* Shapes.swift in Sources */,
