@@ -23,17 +23,20 @@ struct ContentView: View {
                 // Struct was created at the bottom of this file
                 // We bind this options to have more clean code
                 InstructionsView(game: $game)
-                    .padding(.bottom, 100)
+                    .padding(.bottom, alertIsVisible ? 0 : 100)
                 
-                // Create an HSTACK
-                
-               
-                // Inside of the VSTACK, Create a Button
-                
-                HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
-                
+                if alertIsVisible {
+                    PointsView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale)
+                } else {
+                    HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale)
+                }
             }
-            SliderView(sliderView: $sliderValue)
+            if !alertIsVisible {
+                SliderView(sliderView: $sliderValue)
+                    .transition(.scale)
+            }
         }
         
     }
@@ -71,7 +74,10 @@ struct HitMeButton: View {
     @Binding var game: Game
     var body: some View{
         Button(action: {
-            self.alertIsVisible = true
+            withAnimation {
+                self.alertIsVisible = true
+            }
+            
             
         }){
             Text("Hit Me")
@@ -87,22 +93,15 @@ struct HitMeButton: View {
             }
         )
         .foregroundColor(Color.white)
-        .cornerRadius(21.0)
+        .cornerRadius(Constants.General.roundedRectCornerRadius)
         .overlay(
-            RoundedRectangle(cornerRadius: 55.0)
-                .strokeBorder(Color.white, lineWidth: 2.0)
+            RoundedRectangle(cornerRadius: Constants.General.roundedRectCornerRadius)
+                .strokeBorder(Color.white, lineWidth: Constants.General.strokeWidth)
             
         )
         .font(.title3)
         
         .clipShape(Capsule())
-        .alert(isPresented: $alertIsVisible, content: {
-            let roundedValue = Int(sliderValue.rounded())
-            let points = game.points(sliderValue: roundedValue)
-            return Alert(title: Text("Hello there!"), message: Text("The slider's value is \(roundedValue).\n" + "You scored \(points) points this round."), dismissButton: .default(Text("Awesome!")) {
-                game.startNewRound(points: points)
-            })
-        })
         
     }
 }

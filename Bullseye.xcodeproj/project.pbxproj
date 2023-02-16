@@ -13,6 +13,8 @@
 		0511310629479E7900908C89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0511310529479E7900908C89 /* Assets.xcassets */; };
 		0511310929479E7900908C89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0511310829479E7900908C89 /* Preview Assets.xcassets */; };
 		05497EF429734486001767B3 /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05497EF329734486001767B3 /* TextViews.swift */; };
+		05A9C19C299DDDCB00FFCDE0 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A9C19B299DDDCB00FFCDE0 /* Models.swift */; };
+		05A9C19E299DE66F00FFCDE0 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A9C19D299DE66F00FFCDE0 /* LeaderboardView.swift */; };
 		05EBB6DC29490E0100B4130C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EBB6DB29490E0100B4130C /* Game.swift */; };
 		05F77B2D298CC65E00C6CC92 /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F77B2C298CC65E00C6CC92 /* RoundedViews.swift */; };
 		05F77B2F298CCE1E00C6CC92 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F77B2E298CCE1E00C6CC92 /* BackgroundView.swift */; };
@@ -38,6 +40,8 @@
 		0511310529479E7900908C89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0511310829479E7900908C89 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		05497EF329734486001767B3 /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
+		05A9C19B299DDDCB00FFCDE0 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		05A9C19D299DE66F00FFCDE0 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		05EBB6DB29490E0100B4130C /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		05F77B2C298CC65E00C6CC92 /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		05F77B2E298CCE1E00C6CC92 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 		05EBB6D829490D1F00B4130C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				05A9C19B299DDDCB00FFCDE0 /* Models.swift */,
 				05EBB6DB29490E0100B4130C /* Game.swift */,
 			);
 			path = Models;
@@ -118,6 +123,7 @@
 				05F77B2C298CC65E00C6CC92 /* RoundedViews.swift */,
 				05F77B2E298CCE1E00C6CC92 /* BackgroundView.swift */,
 				BC5F35A02998241200E1FE81 /* PointsView.swift */,
+				05A9C19D299DE66F00FFCDE0 /* LeaderboardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,12 +245,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05A9C19E299DE66F00FFCDE0 /* LeaderboardView.swift in Sources */,
 				05F77B2D298CC65E00C6CC92 /* RoundedViews.swift in Sources */,
 				0511310429479E7900908C89 /* ContentView.swift in Sources */,
 				BC5F35A12998241200E1FE81 /* PointsView.swift in Sources */,
 				05497EF429734486001767B3 /* TextViews.swift in Sources */,
 				05F77B2F298CCE1E00C6CC92 /* BackgroundView.swift in Sources */,
 				05015902298A31FF00392A60 /* Shapes.swift in Sources */,
+				05A9C19C299DDDCB00FFCDE0 /* Models.swift in Sources */,
 				05EBB6DC29490E0100B4130C /* Game.swift in Sources */,
 				0511310229479E7900908C89 /* BullseyeApp.swift in Sources */,
 			);
@@ -393,6 +401,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Bullseye/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Bull's Eye";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -421,6 +430,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Bullseye/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Bull's Eye";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
